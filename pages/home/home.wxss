@@ -2,9 +2,8 @@
 .image-container {
   display: flex;
   justify-content: space-evenly;
-  margin: 0 auto;
+  margin: 40rpx auto;
   flex-wrap: wrap;
-  margin-bottom: 20px;
 }
 
 .image-container::after {

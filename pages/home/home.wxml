@@ -13,9 +13,3 @@
     <text class="img-description">{{item.name}}</text>
   </view>
 </view>
-<!-- <view wx:if="{{hasImg === false}}">
-  <button bindtap="chooseImg">选择图片</button>
-</view>
-<view>
-  <button bindtap="previewImg">预览照片</button>
-</view> -->

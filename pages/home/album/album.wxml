@@ -1,17 +1,11 @@
 <!-- pages/home/album/album.wxml -->
-<view class="image-container">
-  <navigator class="weui-btn weui-btn_primary upload-btn" url="./upload/upload?name={{album.name}}">
+<view class="album-image-container">
+  <view wx:for="{{album.imgurl}}" wx:key="*this" class="album-image-wrapper">
+    <view bindtap="previewImage" data-src="{{item}}" class="album-img-inner">
+      <image src="{{item}}" mode="aspectFill" />
+    </view>
+  </view>
+  <navigator class="weui-btn weui-btn_primary self-btn" url="./upload/upload?id={{album.id}}&name={{album.name}}">
     上传图片
   </navigator>
-  <block wx:for="{{album.imgurl}}" wx:key="*this">
-    <view class="weui-uploader__file" bindtap="previewImage" data-src="{{item}}">
-      <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
-    </view>
-  </block>
 </view>
-<!-- <view wx:if="{{hasImg === false}}">
-  <button bindtap="chooseImg">选择图片</button>
-</view>
-<view>
-  <button bindtap="previewImg">预览照片</button>
-</view> -->

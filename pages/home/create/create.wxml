@@ -1,2 +1,26 @@
-<!--pages/home/create/create.wxml-->
-<text>pages/home/create/create.wxml</text>
+<!-- pages/home/create/create.wxml -->
+<view class="page" data-weui-theme="{{theme}}">
+  <view class="weui-form">
+    <view class="weui-form__text-area">
+      <h2 class="weui-form__title">创建相册</h2>
+    </view>
+    <view class="weui-form__control-area">
+      <view class="weui-cells__group weui-cells__group_form">
+        <view class="weui-cells__title">相册信息</view>
+        <view class="weui-cells weui-cells_form">
+          <view class="weui-cell weui-cell_active">
+            <view class="weui-cell__hd">
+              <label class="weui-label">相册名称</label>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请填写相册名称" placeholder-class="weui-input__placeholder" bindinput="nameInput" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-form__opr-area">
+      <a class="weui-btn weui-btn_primary self-btn" bindtap="confirm">确定</a>
+    </view>
+  </view>
+</view>

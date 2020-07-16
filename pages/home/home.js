@@ -1,12 +1,11 @@
 // pages/home/home.js
 let app = getApp()
-let albums = app.albumData.albums
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    albums: albums,
+    albums: [],
   },
   chooseImg: function () {
     let imgurl = this.data.imgurl
@@ -38,7 +37,11 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () {
+    this.setData({
+      albums: app.albumData.albums,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

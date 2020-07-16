@@ -7,21 +7,6 @@ Page({
   data: {
     album: {},
   },
-  chooseImg: function () {
-    let imgurl = this.data.imgurl
-    wx.chooseImage({
-      count: 9,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: (res) => {
-        imgurl.push(...res.tempFilePaths)
-        this.setData({
-          imgurl,
-          hasImg: true,
-        })
-      },
-    })
-  },
   previewImage: function (e) {
     console.log(e.currentTarget.dataset.src)
     wx.previewImage({
@@ -33,7 +18,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     let id = options.id
     for (let temp of albums) {
       console.log(temp)

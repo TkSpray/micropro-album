@@ -5,10 +5,10 @@
       <view class="weui-uploader">
         <view class="weui-uploader__hd">
           <view class="weui-uploader__overview">
-            <view class="weui-uploader__title">相册1</view>
+            <view class="weui-uploader__title">{{name}}</view>
             <view class="weui-uploader__info">{{files.length}}</view>
           </view>
-          <view class="weui-uploader__tips">上传提示</view>
+          <view class="weui-uploader__tips">点击预览</view>
         </view>
         <view class="weui-uploader__bd">
           <view class="weui-uploader__files" id="uploaderFiles">
@@ -25,4 +25,7 @@
       </view>
     </view>
   </view>
+</view>
+<view>
+  <a class="weui-btn weui-btn_primary self-btn" bindtap="redirectTo">确认上传</a>
 </view>

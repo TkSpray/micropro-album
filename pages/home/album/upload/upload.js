@@ -1,10 +1,16 @@
 // pages/home/album/upload/upload.js
+let app = getApp()
+let albums = app.albumData.albums
+let id = 0
+let name
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     files: [],
+    album: {},
+    name: '',
   },
 
   chooseImage: function (e) {
@@ -17,6 +23,13 @@ Page({
         that.setData({
           files: that.data.files.concat(res.tempFilePaths),
         })
+        for (let temp of albums) {
+          if (temp.id == id) {
+            temp.imgurl.push(...res.tempFilePaths)
+            console.log(app.albumData.albums)
+            break
+          }
+        }
       },
     })
   },
@@ -26,11 +39,22 @@ Page({
       urls: this.data.files, // 需要预览的图片http链接列表
     })
   },
-
+  redirectTo() {
+    wx.redirectTo({
+      url: '/pages/home/album/album?id=' + this.id + '&name=' + this.name,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    console.log(options)
+    this.id = options.id
+    this.name = options.name
+    this.setData({
+      name: this.name,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

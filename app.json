@@ -1,10 +1,9 @@
 {
   "pages": [
-    "pages/home/album/upload/upload",
     "pages/home/home",
     "pages/home/create/create",
     "pages/home/album/album",
-
+    "pages/home/album/upload/upload",
     "pages/logs/logs"
   ],
   "window": {
