@@ -8,7 +8,7 @@
   </view>
   <view class="image-wrapper" wx:for-items="{{albums}}" wx:for-item="item" wx:key="*this">
     <navigator url="./album/album?id={{item.id}}&name={{item.name}}">
-      <image mode="aspectFill" src="{{item.imgurl[0]}}" data-src="{{item.imgurl}} "></image>
+      <image mode="aspectFill" src="{{item.imgurl.length?item.imgurl[0]:'/image/default.png'}}" data-src="{{item.imgurl}} "></image>
     </navigator>
     <text class="img-description">{{item.name}}</text>
   </view>

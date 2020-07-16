@@ -37,6 +37,30 @@ App({
     userInfo: null,
   },
   albumData: {
-    albums: [],
+    albums: [
+      {
+        id: 0,
+        name: '相册1',
+        imgurl: [
+          '/image/img2.jpg',
+          '/image/img1.jpg',
+          '/image/img3.jpg',
+          '/image/img4.jpg',
+          '/image/img5.jpg',
+          '/image/img6.jpg',
+          '/image/img7.jpg',
+        ],
+      },
+      {
+        id: 1,
+        name: '相册2',
+        imgurl: ['/image/img3.jpg'],
+      },
+      {
+        id: 2,
+        name: '相册3',
+        imgurl: ['/image/img4.jpg'],
+      },
+    ],
   },
 })
