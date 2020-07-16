@@ -1,0 +1,21 @@
+<!-- pages/home/home.wxml -->
+<view class="image-container">
+  <view class="image-wrapper">
+    <navigator url="./create/create">
+      <image style="image" mode="aspectFill" src="/image/newAlbum.png"></image>
+    </navigator>
+    <text class="img-description">创建相册</text>
+  </view>
+  <view class="image-wrapper" wx:for-items="{{albums}}" wx:for-item="item" wx:key="*this">
+    <navigator url="./album/album?id={{item.id}}&name={{item.name}}">
+      <image mode="aspectFill" src="{{item.imgurl[0]}}" data-src="{{item.imgurl}} "></image>
+    </navigator>
+    <text class="img-description">{{item.name}}</text>
+  </view>
+</view>
+<!-- <view wx:if="{{hasImg === false}}">
+  <button bindtap="chooseImg">选择图片</button>
+</view>
+<view>
+  <button bindtap="previewImg">预览照片</button>
+</view> -->

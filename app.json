@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/home/album/upload/upload",
+    "pages/home/home",
+    "pages/home/create/create",
+    "pages/home/album/album",
+
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "个人相册",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
