@@ -9,10 +9,19 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
 		"coverView": true,
+		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useCompilerModule": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.0",
@@ -24,6 +33,8 @@
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionRoot": "cloudfunctions/",
+	"miniprogramRoot": "miniprogram/",
 	"condition": {
 		"search": {
 			"current": -1,
