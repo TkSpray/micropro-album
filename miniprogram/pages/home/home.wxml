@@ -6,9 +6,9 @@
     </navigator>
     <text class="img-description">创建相册</text>
   </view>
-  <view class="image-wrapper" wx:for-items="{{albums}}" wx:for-item="item" wx:key="*this">
+  <view class="image-wrapper" wx:for-items="{{userData.data[0].albums}}" wx:for-item="item" wx:key="*this">
     <navigator url="./album/album?id={{item.id}}&name={{item.name}}">
-      <image mode="aspectFill" src="{{item.imgurl.length?item.imgurl[0]:'/image/default.png'}}" data-src="{{item.imgurl}} "></image>
+      <image mode="aspectFill" src="{{item.photos.length?item.photos[0].cloudPath:'/image/default.png'}}" data-src="{{item.photos}} "></image>
     </navigator>
     <text class="img-description">{{item.name}}</text>
   </view>

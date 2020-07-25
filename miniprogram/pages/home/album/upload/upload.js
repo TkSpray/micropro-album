@@ -1,8 +1,8 @@
 // pages/home/album/upload/upload.js
 let app = getApp()
 let albums = app.albumData.albums
-let id = 0
-let name
+const db = wx.cloud.database()
+const _ = db.command
 Page({
   /**
    * 页面的初始数据
@@ -11,9 +11,11 @@ Page({
     files: [],
     album: {},
     name: '',
+    id: 0,
+    _id: 0,
   },
 
-  chooseImage: function (e) {
+  async chooseImage(e) {
     var that = this
     wx.chooseImage({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -23,12 +25,37 @@ Page({
         that.setData({
           files: that.data.files.concat(res.tempFilePaths),
         })
-        for (let temp of albums) {
-          if (temp.id == id) {
-            temp.imgurl.push(...res.tempFilePaths)
-            console.log(app.albumData.albums)
-            break
-          }
+        // for (let temp of albums) {
+        //   if (temp.id == id) {
+        //     temp.imgurl.push(...res.tempFilePaths)
+        //     console.log(app.albumData.albums)
+        //     break
+        //   }
+        // }
+        for (let temp of that.data.files) {
+          let filePath = temp
+          let cloudPath =
+            `cloudbase/${Date.now()}-${Math.floor(Math.random(0, 1) * 1000)}` +
+            filePath.match(/\.[^.]+?$/)[0]
+          wx.cloud.uploadFile({
+            cloudPath,
+            filePath,
+            success: (res) => {
+              console.log('上传成功返回的res' + JSON.stringify(res))
+              db.collection('album')
+                .doc(that.data._id)
+                .update({
+                  data: {
+                    ['albums.' + that.data.id + '.photos']: _.push({
+                      cloudPath: res.fileID,
+                    }),
+                  },
+                })
+                .then((result) => {
+                  console.log('写入成功', result)
+                })
+            },
+          })
         }
       },
     })
@@ -41,7 +68,15 @@ Page({
   },
   redirectTo() {
     wx.redirectTo({
-      url: '/pages/home/album/album?id=' + this.id + '&name=' + this.name,
+      url: '/pages/home/home',
+    })
+  },
+  async checkUser() {
+    const userData = await db.collection('album').get()
+    let _id = userData.data[0]._id
+
+    this.setData({
+      _id,
     })
   },
   /**
@@ -49,10 +84,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    this.id = options.id
-    this.name = options.name
     this.setData({
-      name: this.name,
+      name: options.name,
+      id: options.id,
     })
   },
 
@@ -64,7 +98,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () {
+    this.checkUser()
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

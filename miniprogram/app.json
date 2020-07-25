@@ -4,6 +4,7 @@
     "pages/home/create/create",
     "pages/home/album/album",
     "pages/home/album/upload/upload",
+    "pages/home/album/imgprocess/imgprocess",
     "pages/logs/logs"
   ],
   "window": {

@@ -1,28 +1,25 @@
 // pages/home/create/create.js
 let app = getApp()
-let albums = app.albumData.albums
+const db = wx.cloud.database()
+const _ = db.command
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    albums: albums,
     name: '',
     id: 0,
+    userData: {},
   },
   confirm() {
-    let id = albums.length
-    let name = this.data.name
-    let album = {
-      id: id,
-      name: name,
-      imgurl: [],
-    }
-
-    app.albumData.albums.push(album)
+    this.createAlbum()
 
     wx.redirectTo({
-      url: '/pages/home/album/upload/upload?id=' + id + '&name=' + name,
+      url:
+        '/pages/home/album/upload/upload?id=' +
+        this.data.id +
+        '&name=' +
+        this.data.name,
     })
   },
   nameInput: function (e) {
@@ -30,6 +27,26 @@ Page({
       name: e.detail.value,
     })
   },
+  async createAlbum() {
+    const userData = await db.collection('album').get()
+    let id = userData.data[0].albums.length
+    const _id = userData.data[0]._id
+    this.setData({
+      userData,
+      id,
+    })
+    let name = this.data.name
+
+    return await db
+      .collection('album')
+      .doc(_id)
+      .update({
+        data: {
+          albums: _.push([{ id: id, name: name, photos: [] }]),
+        },
+      })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

@@ -1,8 +1,8 @@
 <!-- pages/home/album/album.wxml -->
 <view class="album-image-container">
-  <view wx:for="{{album.imgurl}}" wx:key="*this" class="album-image-wrapper">
-    <view bindtap="previewImage" data-src="{{item}}" class="album-img-inner">
-      <image src="{{item}}" mode="aspectFill" />
+  <view wx:for="{{album.photos}}" wx:key="*this" class="album-image-wrapper">
+    <view bindtap="previewImage" bindlongtap="imgProcess" bindtouchstart='tapStart' bindtouchend='tapEnd' data-src="{{item.cloudPath}}" class="album-img-inner">
+      <image src="{{item.cloudPath}}" mode="aspectFill" />
     </view>
   </view>
   <navigator class="weui-btn weui-btn_primary self-btn" url="./upload/upload?id={{album.id}}&name={{album.name}}">

@@ -7,7 +7,7 @@ App({
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
       wx.cloud.init({
-        env: '你的环境ID',
+        env: 'xly-smmu1',
         traceUser: true,
       })
     }
@@ -44,31 +44,34 @@ App({
   globalData: {
     userInfo: null,
   },
+  userData: {
+    userdata: {},
+  },
   albumData: {
     albums: [
-      {
-        id: 0,
-        name: '相册1',
-        imgurl: [
-          '/image/img2.jpg',
-          '/image/img1.jpg',
-          '/image/img3.jpg',
-          '/image/img4.jpg',
-          '/image/img5.jpg',
-          '/image/img6.jpg',
-          '/image/img7.jpg',
-        ],
-      },
-      {
-        id: 1,
-        name: '相册2',
-        imgurl: ['/image/img3.jpg'],
-      },
-      {
-        id: 2,
-        name: '相册3',
-        imgurl: ['/image/img4.jpg'],
-      },
+      // {
+      //   id: 0,
+      //   name: '相册1',
+      //   imgurl: [
+      //     '/image/img2.jpg',
+      //     '/image/img1.jpg',
+      //     '/image/img3.jpg',
+      //     '/image/img4.jpg',
+      //     '/image/img5.jpg',
+      //     '/image/img6.jpg',
+      //     '/image/img7.jpg',
+      //   ],
+      // },
+      // {
+      //   id: 1,
+      //   name: '相册2',
+      //   imgurl: ['/image/img3.jpg'],
+      // },
+      // {
+      //   id: 2,
+      //   name: '相册3',
+      //   imgurl: ['/image/img4.jpg'],
+      // },
     ],
   },
 })
